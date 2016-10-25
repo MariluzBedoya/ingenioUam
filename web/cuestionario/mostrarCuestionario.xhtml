@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CuestionarioMostrarDlg" widgetVar="CuestionarioMostrarDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewCuestionarioTitle}">
+            <h:form id="CuestionarioMostrarForm">
+                
+                <p:scrollPanel style="width:1000px;height:600px">
+                <h:panelGroup id="display"> 
+
+
+                    <p:dataTable id="datalist" value="#{cuestionarioController.preguntas}" var="item"
+                                
+                                 selectionMode="single" selection="#{cuestionarioController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.id}"
+                                 rows="8"
+                                 rowsPerPageTemplate="8,16"
+                                 >
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Pregunta"/>
+                            </f:facet>
+                            <h3>Seleccion Multiple</h3>
+                            <h:outputText value="#{item.enunciado}"/>
+                            
+                        </p:column>
+                        
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Respuestas"/>
+                                
+                            </f:facet>
+                          
+    <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+       
+        <p:selectOneRadio id="city" value=""  layout="grid" columns="1">
+            <f:selectItems value="#{cuestionarioController.respuestas}" var="c" itemLabel="#{c.descripcion}" itemValue="#{c.descripcion}"/>
+          
+        </p:selectOneRadio>
+    </h:panelGrid>
+                        </p:column>
+                        
+                        
+                        
+                        
+                       
+                    </p:dataTable> </h:panelGroup>
+                    
+                    
+                <h:panelGroup id="display1">
+                    
+                    <p:dataTable id="datalist1" value="#{cuestionarioController.preguntas1}" var="item"
+                                 selectionMode="single" selection="#{cuestionarioController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.id}"
+                                 rows="8"
+                                 rowsPerPageTemplate="8,16"
+                                 > 
+                   
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Preguntas"/>
+                            </f:facet>
+                            <h3>Falso - Verdadero</h3>
+                            <h:outputText value="#{item.enunciado}"/>
+                            
+                        </p:column>
+                        
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Respuestas"/>
+                                
+                            </f:facet>
+                            
+                            <h:form>
+   
+    <h:panelGrid columns="1" style="margin-bottom:10px" cellpadding="5">
+    
+        <p:selectOneRadio id="console" value="">
+            <f:selectItem itemLabel="Falso" itemValue="Falso" />
+            <br></br>
+            <f:selectItem itemLabel="Verdadero" itemValue="Verdadero" />
+           
+        </p:selectOneRadio>
+    </h:panelGrid> </h:form>
+    
+                        </p:column>
+                        
+                             
+                    </p:dataTable>
+                </h:panelGroup>
+                    
+                <h:panelGroup id="display2">
+                    
+                    <p:dataTable id="datalist2" value="#{cuestionarioController.preguntas2}" var="item"
+                                 selectionMode="single" selection="#{cuestionarioController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.id}"
+                                 rows="8"
+                                 rowsPerPageTemplate="8,16"
+                                 > 
+                        
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Pregunta"/>
+                            </f:facet>
+                            <h3>Abierta</h3>
+                            <h:outputText value="#{item.enunciado}"/>
+                            
+                        </p:column>
+                        
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Respuestas"/>
+                                
+                            </f:facet>
+                            
+                            <p:inputText> </p:inputText>
+    
+                        </p:column>
+                         
+                         
+                         
+                        
+                    </p:dataTable>
+                    
+                    
+
+                </h:panelGroup>
+                    </p:scrollPanel>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

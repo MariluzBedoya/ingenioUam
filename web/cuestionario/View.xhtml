@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CuestionarioViewDlg" widgetVar="CuestionarioViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewCuestionarioTitle}">
+            <h:form id="CuestionarioViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cuestionarioController.selected != null}">
+                        <h:outputText value="#{bundle.ViewCuestionarioLabel_id}"/>
+                        <h:outputText value="#{cuestionarioController.selected.id}" title="#{bundle.ViewCuestionarioTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewCuestionarioLabel_nombre}"/>
+                        <h:outputText value="#{cuestionarioController.selected.nombre}" title="#{bundle.ViewCuestionarioTitle_nombre}"/>
+                        <h:outputText value="#{bundle.ViewCuestionarioLabel_cantPregFv}"/>
+                        <h:outputText value="#{cuestionarioController.selected.cantPregFv}" title="#{bundle.ViewCuestionarioTitle_cantPregFv}"/>
+                        <h:outputText value="#{bundle.ViewCuestionarioLabel_cantPregSm}"/>
+                        <h:outputText value="#{cuestionarioController.selected.cantPregSm}" title="#{bundle.ViewCuestionarioTitle_cantPregSm}"/>
+                        <h:outputText value="#{bundle.ViewCuestionarioLabel_cantPregAb}"/>
+                        <h:outputText value="#{cuestionarioController.selected.cantPregAb}" title="#{bundle.ViewCuestionarioTitle_cantPregAb}"/>
+                        <h:outputText value="#{bundle.ViewCuestionarioLabel_idDepartamento}"/>
+                        <h:outputText value="#{cuestionarioController.selected.idDepartamento.nombre}" title="#{bundle.ViewCuestionarioTitle_idDepartamento}"/>
+                        <h:outputText value="#{bundle.ViewCuestionarioLabel_idCurso}"/>
+                        <h:outputText value="#{cuestionarioController.selected.idCurso.nombre}" title="#{bundle.ViewCuestionarioTitle_idCurso}"/>
+                        <h:outputText value="#{bundle.ViewCuestionarioLabel_idTema}"/>
+                        <h:outputText value="#{cuestionarioController.selected.idTema.nombre}" title="#{bundle.ViewCuestionarioTitle_idTema}"/>
+                        <h:outputText value="#{bundle.ViewCuestionarioLabel_cedulaProfesor}"/>
+                        <h:outputText value="#{cuestionarioController.selected.cedulaProfesor.nombre}" title="#{bundle.ViewCuestionarioTitle_cedulaProfesor}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="CuestionarioViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

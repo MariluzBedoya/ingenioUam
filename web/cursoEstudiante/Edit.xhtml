@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CursoEstudianteEditDlg" widgetVar="CursoEstudianteEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditCursoEstudianteTitle}">
+            <h:form id="CursoEstudianteEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cursoEstudianteController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditCursoEstudianteLabel_fechaInscripcion}" for="fechaInscripcion" />
+                        <p:calendar id="fechaInscripcion" pattern="MM/dd/yyyy" value="#{cursoEstudianteController.selected.fechaInscripcion}" title="#{bundle.EditCursoEstudianteTitle_fechaInscripcion}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditCursoEstudianteLabel_nota}" for="nota" />
+                        <p:inputText id="nota" value="#{cursoEstudianteController.selected.nota}" title="#{bundle.EditCursoEstudianteTitle_nota}" />
+                        <p:outputLabel value="#{bundle.EditCursoEstudianteLabel_curso}" for="curso" />
+                        <p:selectOneMenu id="curso" value="#{cursoEstudianteController.selected.curso}" required="true" requiredMessage="#{bundle.EditCursoEstudianteRequiredMessage_curso}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{cursoController.itemsAvailableSelectOne}"
+                                           var="cursoItem"
+                                           itemValue="#{cursoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditCursoEstudianteLabel_estudiante}" for="estudiante" />
+                        <p:selectOneMenu id="estudiante" value="#{cursoEstudianteController.selected.estudiante}" required="true" requiredMessage="#{bundle.EditCursoEstudianteRequiredMessage_estudiante}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{estudianteController.itemsAvailableSelectOne}"
+                                           var="estudianteItem"
+                                           itemValue="#{estudianteItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cursoEstudianteController.update}" value="#{bundle.Save}" update="display,:CursoEstudianteListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CursoEstudianteEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CursoEstudianteEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

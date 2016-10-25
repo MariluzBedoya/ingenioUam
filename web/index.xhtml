@@ -1,0 +1,119 @@
+<!--
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+    <h:body>
+        Hello from Facelets
+        <br />
+        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
+        <br />
+        <h:link outcome="/cuestionario/List" value="Show All Cuestionario Items"/>
+        <br />
+        <h:link outcome="/curso/List" value="Show All Curso Items"/>
+        <br />
+        <h:link outcome="/cursoEstudiante/List" value="Show All CursoEstudiante Items"/>
+        <br />
+        <h:link outcome="/departamento/List" value="Show All Departamento Items"/>
+        <br />
+        <h:link outcome="/estudiante/List" value="Show All Estudiante Items"/>
+        <br />
+        <h:link outcome="/estudianteCuestionario/List" value="Show All EstudianteCuestionario Items"/>
+        <br />
+        <h:link outcome="/glosario/List" value="Show All Glosario Items"/>
+        <br />
+        <h:link outcome="/pregunta/List" value="Show All Pregunta Items"/>
+        <br />
+        <h:link outcome="/profesor/List" value="Show All Profesor Items"/>
+        <br />
+        <h:link outcome="/respuesta/List" value="Show All Respuesta Items"/>
+        <br />
+        <h:link outcome="/tema/List" value="Show All Tema Items"/>
+        <br />
+        <h:link outcome="/tipoPregunta/List" value="Show All TipoPregunta Items"/>
+    </h:body>
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>PrimeFaces</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                    CUESTIONARIO UAM
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+                    Footer
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="175" header="" collapsible="true">
+                    <p:menu>
+                       
+                           <p:menuitem value="Tema" outcome="/tema/List" />
+                           <p:menuitem value="Glosario" outcome="/glosario/List" />
+                            <p:menuitem value="Cuestionario" outcome="/cuestionario/List" />
+     
+                        <p:menuitem value="Departamento" outcome="/departamento/List" />
+                           <p:menuitem value="Profesor" outcome="/profesor/List" />
+                            <p:menuitem value="Curso" outcome="/curso/List" />
+                             <p:menuitem value="Estudiante" outcome="/estudiante/List" />
+                        
+                    
+                    
+                    </p:menu>
+                    
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    Welcome to PrimeFaces
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+ </ui:composition>
+
+</html>

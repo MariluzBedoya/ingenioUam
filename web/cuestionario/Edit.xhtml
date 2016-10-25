@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CuestionarioEditDlg" widgetVar="CuestionarioEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditCuestionarioTitle}">
+            <h:form id="CuestionarioEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cuestionarioController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditCuestionarioLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{cuestionarioController.selected.id}" title="#{bundle.EditCuestionarioTitle_id}" required="true" requiredMessage="#{bundle.EditCuestionarioRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditCuestionarioLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{cuestionarioController.selected.nombre}" title="#{bundle.EditCuestionarioTitle_nombre}" />
+                        <p:outputLabel value="#{bundle.EditCuestionarioLabel_cantPregFv}" for="cantPregFv" />
+                        <p:inputText id="cantPregFv" value="#{cuestionarioController.selected.cantPregFv}" title="#{bundle.EditCuestionarioTitle_cantPregFv}" />
+                        <p:outputLabel value="#{bundle.EditCuestionarioLabel_cantPregSm}" for="cantPregSm" />
+                        <p:inputText id="cantPregSm" value="#{cuestionarioController.selected.cantPregSm}" title="#{bundle.EditCuestionarioTitle_cantPregSm}" />
+                        <p:outputLabel value="#{bundle.EditCuestionarioLabel_cantPregAb}" for="cantPregAb" />
+                        <p:inputText id="cantPregAb" value="#{cuestionarioController.selected.cantPregAb}" title="#{bundle.EditCuestionarioTitle_cantPregAb}" />
+                        <p:outputLabel value="#{bundle.EditCuestionarioLabel_idDepartamento}" for="idDepartamento" />
+                        <p:selectOneMenu id="idDepartamento" value="#{cuestionarioController.selected.idDepartamento}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{departamentoController.itemsAvailableSelectOne}"
+                                           var="idDepartamentoItem"
+                                           itemValue="#{idDepartamentoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditCuestionarioLabel_idCurso}" for="idCurso" />
+                        <p:selectOneMenu id="idCurso" value="#{cuestionarioController.selected.idCurso}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{cursoController.itemsAvailableSelectOne}"
+                                           var="idCursoItem"
+                                           itemValue="#{idCursoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditCuestionarioLabel_idTema}" for="idTema" />
+                        <p:selectOneMenu id="idTema" value="#{cuestionarioController.selected.idTema}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{temaController.itemsAvailableSelectOne}"
+                                           var="idTemaItem"
+                                           itemValue="#{idTemaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditCuestionarioLabel_cedulaProfesor}" for="cedulaProfesor" />
+                        <p:selectOneMenu id="cedulaProfesor" value="#{cuestionarioController.selected.cedulaProfesor}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{profesorController.itemsAvailableSelectOne}"
+                                           var="cedulaProfesorItem"
+                                           itemValue="#{cedulaProfesorItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cuestionarioController.update}" value="#{bundle.Save}" update="display,:CuestionarioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CuestionarioEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CuestionarioEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

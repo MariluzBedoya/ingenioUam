@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="GlosarioEditDlg" widgetVar="GlosarioEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditGlosarioTitle}">
+            <h:form id="GlosarioEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{glosarioController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditGlosarioLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{glosarioController.selected.id}" title="#{bundle.EditGlosarioTitle_id}" required="true" requiredMessage="#{bundle.EditGlosarioRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditGlosarioLabel_palabra}" for="palabra" />
+                        <p:inputText id="palabra" value="#{glosarioController.selected.palabra}" title="#{bundle.EditGlosarioTitle_palabra}" />
+                        <p:outputLabel value="#{bundle.EditGlosarioLabel_descripcion}" for="descripcion" />
+                        <p:inputText id="descripcion" value="#{glosarioController.selected.descripcion}" title="#{bundle.EditGlosarioTitle_descripcion}" />
+                        <p:outputLabel value="#{bundle.EditGlosarioLabel_idTema}" for="idTema" />
+                        <p:selectOneMenu id="idTema" value="#{glosarioController.selected.idTema}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{temaController.itemsAvailableSelectOne}"
+                                           var="idTemaItem"
+                                           itemValue="#{idTemaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditGlosarioLabel_idDepartamento}" for="idDepartamento" />
+                        <p:selectOneMenu id="idDepartamento" value="#{glosarioController.selected.idDepartamento}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{departamentoController.itemsAvailableSelectOne}"
+                                           var="idDepartamentoItem"
+                                           itemValue="#{idDepartamentoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditGlosarioLabel_idCurso}" for="idCurso" />
+                        <p:selectOneMenu id="idCurso" value="#{glosarioController.selected.idCurso}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{cursoController.itemsAvailableSelectOne}"
+                                           var="idCursoItem"
+                                           itemValue="#{idCursoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{glosarioController.update}" value="#{bundle.Save}" update="display,:GlosarioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'GlosarioEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="GlosarioEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

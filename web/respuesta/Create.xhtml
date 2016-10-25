@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="RespuestaCreateDlg" widgetVar="RespuestaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateRespuestaTitle}">
+            <h:form id="RespuestaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{respuestaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateRespuestaLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{respuestaController.selected.id}" title="#{bundle.CreateRespuestaTitle_id}" required="true" requiredMessage="#{bundle.CreateRespuestaRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.CreateRespuestaLabel_descripcion}" for="descripcion" />
+                        <p:inputText id="descripcion" value="#{respuestaController.selected.descripcion}" title="#{bundle.CreateRespuestaTitle_descripcion}" />
+                        <p:outputLabel value="#{bundle.CreateRespuestaLabel_correcta}" for="correcta" />
+                        <p:inputText id="correcta" value="#{respuestaController.selected.correcta}" title="#{bundle.CreateRespuestaTitle_correcta}" />
+                        <p:outputLabel value="#{bundle.CreateRespuestaLabel_idPregunta}" for="idPregunta" />
+                        <p:selectOneMenu id="idPregunta" value="#{respuestaController.selected.idPregunta}" >
+                            <f:selectItems value="#{preguntaController.itemsAvailableSelectOne}"
+                                           var="idPreguntaItem"
+                                           itemValue="#{idPreguntaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{respuestaController.create}" value="#{bundle.Save}" update="display,:RespuestaListForm:datalist,:growl" oncomplete="handleSubmit(args,'RespuestaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="RespuestaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
